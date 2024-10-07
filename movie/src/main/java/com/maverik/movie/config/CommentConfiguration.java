@@ -28,6 +28,7 @@ public class CommentConfiguration {
             List<Comment> comments = readCommentServiceService.readCommentsIntoCommentPOJO(responseBody);
             readCommentServiceService.populateCommentsIntoDB(comments);
 
+
         };
 
     };

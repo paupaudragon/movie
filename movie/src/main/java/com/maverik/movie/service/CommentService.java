@@ -45,7 +45,7 @@ public class CommentService {
 
     @Modifying
     @Transactional
-    public void updateComment(Integer commentId, Comment comment) {
+    public Comment updateComment(Integer commentId, Comment comment) {
         Optional<Comment> commOp = commentRepository.findById(commentId);
         if(commOp.isEmpty()) {
             throw new IllegalStateException("comment doesn't exists");
@@ -67,6 +67,7 @@ public class CommentService {
             commentOriginal.setPostId(comment.getPostId());
         }
         commentRepository.save(commentOriginal);
+        return commentOriginal;
     }
 
     public Comment getAComment(Integer customer_id) {
