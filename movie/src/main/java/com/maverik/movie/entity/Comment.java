@@ -1,6 +1,7 @@
 package com.maverik.movie.entity;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -16,10 +17,22 @@ import lombok.NoArgsConstructor;
 public class Comment {
 
     @Id
+
     private Integer id;
     private Integer postId;
+
+    @Column(
+            columnDefinition = "TEXT"
+    )
     private String name;
+
+    @Column(
+            columnDefinition = "TEXT"
+    )
     private String email;
+    @Column(
+            columnDefinition = "TEXT"
+    )
     private String body;
 
 }

@@ -13,15 +13,20 @@ import java.util.List;
 @Configuration
 public class CommentConfiguration {
 
-    @Autowired
     ReadCommentService readCommentServiceService;
+
+    @Autowired
+    public CommentConfiguration(ReadCommentService readCommentServiceService) {
+        this.readCommentServiceService = readCommentServiceService;
+    }
+
     @Bean
     CommandLineRunner commandLineRunner() {
         return args->{
 
             String responseBody = readCommentServiceService.getCommentsFromExternal();
             List<Comment> comments = readCommentServiceService.readCommentsIntoCommentPOJO(responseBody);
-
+            readCommentServiceService.populateCommentsIntoDB(comments);
 
         };
 
